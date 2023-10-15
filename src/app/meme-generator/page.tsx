@@ -8,9 +8,10 @@ import Image from 'next/image';
 export default function Home() {
   const [meme, setMeme] = useState<any>({})
   const [generate, setGenerate] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     setLoading(true)
+
     axios.get('https://api.memegen.link/templates/')
       .then((res: any) => {
         const datas = res.data
@@ -33,7 +34,7 @@ export default function Home() {
       {loading && (
         <div className='text-center'>Loading...</div>
       )}
-      {meme && (
+      {!loading && meme && (
         <div className='flex justify-center'>
         <Image src={meme} alt={meme} width={500} height={500} priority  /> 
         </div>
