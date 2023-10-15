@@ -17,30 +17,33 @@ export default function Home() {
   }
 
   return (
-    <div className='max-w-3xl mx-auto grid grid-cols-2 gap-5 my-10'>
-      <div className='flex flex-col gap-3'>
-        <InputField
-          label="Gaji Pokok"
-          value={gajiPokok.toString()}
-          onChange={(e: any) => setGajiPokok(e.target.value)}
-        />
-        <InputField
-          label="Tunjangan"
-          value={tunjangan.toString()}
-          onChange={(e: any) => setTunjangan(e.target.value)}
-        />
-        <InputField
-          label="Kewajiban Pokok"
-          value={kewajibanPokok}
-          onChange={(e: any) => setKewajibanPokok(e.target.value)}
-        />
-      </div>
+    <div className='max-w-3xl mx-6 md:mx-auto my-10'>
+      <h2 className=' text-2xl font-bold'>Salary Calculating</h2>
+      <div className=' grid grid-cols-1 md:grid-cols-2  gap-5 my-10'>
+        <div className='flex flex-col gap-3'>
+          <InputField
+            label="Gaji Pokok"
+            value={gajiPokok.toString()}
+            onChange={(e: any) => setGajiPokok(e.target.value)}
+          />
+          <InputField
+            label="Tunjangan"
+            value={tunjangan.toString()}
+            onChange={(e: any) => setTunjangan(e.target.value)}
+          />
+          <InputField
+            label="Kewajiban Pokok"
+            value={kewajibanPokok}
+            onChange={(e: any) => setKewajibanPokok(e.target.value)}
+          />
+        </div>
 
-      <div className='flex flex-col gap-2'>
-        <h1 className='text-2xl font-medium'>Salary</h1>
-        <p>Gaji Kotor : {Total(IDR(gajiPokok) + IDR(tunjangan))}</p>
-        <p>Gaji Pokok : {Total(IDR(gajiPokok))}</p>
-        <p>Gaji Bersih : {Total(IDR(gajiPokok) + IDR(tunjangan) - IDR(kewajibanPokok))}</p>
+        <div className='flex flex-col gap-2'>
+          <h1 className='text-2xl font-medium'>Salary</h1>
+          <p>Gaji Kotor : {Total(IDR(gajiPokok) + IDR(tunjangan))}</p>
+          <p>Gaji Pokok : {Total(IDR(gajiPokok))}</p>
+          <p>Gaji Bersih : {Total(IDR(gajiPokok) + IDR(tunjangan) - IDR(kewajibanPokok))}</p>
+        </div>
       </div>
     </div>
   )

@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  // image
+  images: {
+    domains: ["api.memegen.link"],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

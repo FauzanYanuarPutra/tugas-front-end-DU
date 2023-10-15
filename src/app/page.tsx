@@ -13,6 +13,9 @@ export default function Home() {
       <Link href="/current-converter" className='w-full flex justify-center items-center p-5 bg-white rounded-lg font-bold text-blue-600'>
         Current-Converter
       </Link>
+      <Link href="/meme-generator" className='w-full flex justify-center items-center p-5 bg-white rounded-lg font-bold text-blue-600'>
+        meme
+      </Link>
     </div>
   )
 }

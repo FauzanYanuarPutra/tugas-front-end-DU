@@ -32,6 +32,12 @@ export default function Home() {
       });
   }, [selectedCurrency]);
 
+  useEffect(() => {
+    setToAmount(0);
+    handleConversion();
+      // eslint-disable-next-line
+  }, [targetCurrency]);
+
   const handleConversion = () => {
     if (targetCurrency in currency) {
       const convertedValue = currency[targetCurrency];
@@ -55,34 +61,34 @@ export default function Home() {
     return numberFormats[targetCurrency].format(amount);
   }
 
-  const HandleCurency = (e: any) => {
-    setTargetCurrency(e.target.value);
-    handleConversion()
-  }
   
   return (
-    <div className="mx-20 my-10">
-      <div className="flex flex-col gap-3">
-        <input type="text" value={fromAmount} onChange={(e) => setFromAmount(e.target.value)} />
-        <input type="text" value={HandleCurrent(toAmount)} onChange={(e) => setToAmount(e.target.value)} readOnly />
-        <select value={selectedCurrency} onChange={(e) => setSelectedCurrency(e.target.value)}>
-          {CurrencyData.map((currency) => (
-            <option key={currency} value={currency}>
-              {currency}
-            </option>
-          ))}
-        </select>
-        <select value={targetCurrency} onChange={(e) => HandleCurency(e)}>
-          {CurrencyData.map((currency) => (
-            <option key={currency} value={currency}>
-              {currency}
-            </option>
-          ))}
-        </select>
-        <button type="button" onClick={() => handleConversion()}>
-          Convert
-        </button>
+    <div className="mx-5 my-10 flex flex-col  gap-3">
+      <h2 className='text-2xl font-bold'>Current Converter</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <input type="text" value={fromAmount} onChange={(e) =>  setFromAmount(e.target.value) } className='w-full  rounded-lg shadow-lg p-2' />
+        <div className='flex gap-2'>
+          <select value={selectedCurrency} onChange={(e) => setSelectedCurrency(e.target.value)} className='w-full'>
+            {CurrencyData.map((currency) => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
+          </select>
+          <select value={targetCurrency} onChange={(e) => setTargetCurrency(e.target.value)} className='w-full'>
+            {CurrencyData.map((currency) => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
+          </select>
+          <button type="button" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded-lg w-full' onClick={() => handleConversion()}>
+            Convert
+          </button>
+        </div>
       </div>
+      <input type="text" value={HandleCurrent(toAmount)} onChange={(e) => setToAmount(e.target.value)} readOnly className='w-full rounded-lg shadow-lg p-2' />
+
     </div>
   );
 }

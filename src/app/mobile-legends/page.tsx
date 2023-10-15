@@ -49,7 +49,6 @@ export default function Home() {
   }, []);
 
   const searchData = () => {
-    console.log(search)
 
     let filterHeroes = originalData.filter((hero: Hero) => {
       return hero.hero_name.toLowerCase().includes(search.name.toLowerCase());
@@ -75,6 +74,8 @@ export default function Home() {
 
   return (
     <div className='w-[90%] mx-auto max-w-[800px] my-10'>
+      <h2 className='text-2xl font-bold'>Mobile Legends</h2>
+
       <div className='my-10 flex gap-2'>
         <input
           onChange={(e) => setSearch({ ...search, name: e.target.value })}
